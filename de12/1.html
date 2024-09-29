@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>第1回</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第1回(GitとHTMLについて)</h1> 
+  <div>
+   <font color="red"><h2>Gitについて</h2></font><br>
+   <u><h3>Gitとは?</h3></u>
+
+         一言で言い表すならば<strong>ファイルのバージョンを管理するシステム</strong>である。<br>
+         ウェブサイトを作る上で、新しく編集したり古いバージョンに戻したりしたいときに役立つ便利なツールである。<br>
+         </div>
+
+  <div>
+    <u><h3>Gitでできること</h3></u>
+    <ul>
+      <li>古いバージョンから新しいバージョンのファイルまで管理できる</li>
+      <li>いつでもバックアップに復元できる</li>
+      <li>いつ誰がどのファイルをどう編集したのかを履歴として残すことができる</li>
+      <li>複数人で同じファイルを編集して、変更履歴を共有したり、修正部分を統合したりすることができる</li>
+    </ul>
+    </div>
+
+  <div>
+    <u><h3>集中型と分散型</h3></u>
+
+    Gitにはファイルの履歴を保存するための保管庫のようなストレージがある。これを<font color="blue"><strong>リポジトリ</strong></font>という。<br>
+   <br>
+    そしてGitには2種類のリポジトリがある。<br>
+   <br>
+    ・リモートリポジトリ：全員で同じリポジトリを共有して使用する<br>
+    ・ローカルリポジトリ：それぞれが自分のリポジトリを使用する<br>
+   <br>
+   リモートリポジトリのみを使用するシステムを<strong>集中型</strong>、<br>
+   ローカルリポジトリを使用して、リモートリポジトリと同期するシステムを<strong>分散型</strong>という。<br>
+  （ちなみにGitHubは分散型である。）<br>
+  </div>
+  <br>
+  <div>
+    <img src="./images/リポジトリ.gif" width="40%"><br>
+  引用画像元HP:<a href="https://codezine.jp/article/detail/7353">Gitでリモートリポジトリを操作する</a><br>
+  参考文献:<a href="https://www.kagoya.jp/howto/it-glossary/develop/git/">【入門】Gitとは？できることや使い方、GitHubとの違いをわかりやすく解説</a><br>
+   </div>
+  <br>
+  <div>
+    <font color="red"><h2>HTMLについて</h2></font><br>
+    <u><h3>HTMLとは?</h3></u>
+  「HyperText Markup Language」の略である。<br>
+  テキストを超えて（HyperText）、コンピュータが理解できるような形で文書に印をつけた（Markup）言語（Language）である。<br>
+  このHTMLによって、見出し、文字の大きさ、フォント、色などを自由にコーティングすることができる。<br>
+  </div>
+
+  <div>
+    <u><h3>主なHTMLタグの種類</h3></u>
+  <table border>
+     <tr>
+      <th>タグ名</th>
+      <th>説明</th>
+     </tr>
+     <tr>
+      <th>h</th>
+      <th>見出し（h1,h2,h3...と続く）</th>
+     </tr>
+     <tr>
+      <th>p</th>
+      <th>段落</th>
+     </tr>
+     <tr>
+      <th>a</th>
+      <th>リンクを挿入</th>
+     </tr>
+     <tr>
+      <th>img</th>
+      <th>画像表示</th>
+     </tr>
+     <tr>
+      <th>li</th>
+      <th>箇条書き（数字はol  点はul）</th>
+     </tr>
+     <tr>
+      <th>br</th>
+      <th>改行</th>
+     </tr>
+  </table>
+  <br>
+  これだけではなくHTMLタグはもっとたくさんある。詳しく知りたい人はこちら→<a href="http://www.fureai.or.jp/~irie/html-tag/">HTMLタグ一覧</a><br>
+ </div>
+
+ <div>
+  <u><h3>HTMLでYouTube貼り付け!</h3></u>
+  HTMLでYouTubeの動画を貼り付けることもできる。<br>
+  <br>
+  <strong>手順</strong><br>
+ <ol>
+    <li>貼り付けたい動画の「共有」をクリック</li>
+    <li>「埋め込む」をクリック</li>
+    <li>出てきた埋め込みコードをコピーする</li>
+    <li>＜div class="video"＞コピーしたコード＜/div＞と入力する</li>
+ </ol>
+
+
+
+  実際に表示するとこんな感じ<br>
+  <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/hdpMw3hyQq4?si=ClqodmFTv3gr7WUH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<br>
+参考文献：<a href="https://udemy.benesse.co.jp/design/web-design/what-is-html.html">HTMLとは？初心者向けに基本構造からタグの使い方まで解説！</a><br>
+ </div>
+          
+
+        
+
+
+
+
+    
+
+</body>
+</html>

@@ -18,6 +18,10 @@ def get_emotion_params(emotion):
         return {"energy": 0.3, "valence": 0.2, "danceability": 0.3}
     elif emotion == "angry":
         return {"energy": 0.8, "valence": 0.4, "danceability": 0.6}
+    elif emotion == "exciting":
+        return {"energy": 0.9, "valence": 1.0, "danceability": 0.8}
+    elif emotion == "nervous":
+        return {"energy": 0.8, "valence": 1.0, "danceability": 0.5}
     elif emotion == "relaxed":
         return {"energy": 0.4, "valence": 0.6, "danceability": 0.5}
     else:
@@ -31,7 +35,7 @@ def recommend_music(emotion):
     # Spotify APIの曲検索
     results = sp.recommendations(
         seed_genres=["pop", "rock", "hip-hop", "jazz", "classical"],  # ジャンルを指定（調整可能）
-        limit=10,
+        limit=5,
         target_energy=params["energy"],
         target_valence=params["valence"],
         target_danceability=params["danceability"]
@@ -47,5 +51,8 @@ def recommend_music(emotion):
         print("No tracks found for this emotion.")
 
 # 使用例
-emotion = "sad"  # 'joyful', 'sad', 'angry', 'relaxed'のいずれか
+emotion = "nervous"  # 'joyful'(嬉しい), 'sad'(悲しい), 'angry'(怒っている), 'exciting'(楽しい), 'nervous'(緊張している), 'relaxed'(落ち着いている),のいずれか
+recommend_music(emotion)
+
+"  # 'joyful', 'sad', 'angry', 'exciting', 'nervous', 'relaxed' のいずれか"
 recommend_music(emotion)

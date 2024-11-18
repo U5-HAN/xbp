@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>音楽×感情</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>感情に合ったおすすめの音楽を紹介してくれるやつ</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    
+    <div>
+      <h3>【ソースコード】</h3><br>
+    <body>
+      <pre>
+         <code>
+            import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+import random
+
+# Spotify APIの認証情報を入力
+client_id = 'fced629031ee4e6fa73ad81c818f1ea8'
+client_secret = '244d13bde7fc40d29dd2e52d1f7683ba'
+
+# Spotify APIクライアントの初期化
+auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
+# 感情に対応するSpotifyの音楽特徴パラメータを定義
+def get_emotion_params(emotion):
+    if emotion == "joyful":
+        return {"energy": 0.7, "valence": 0.8, "danceability": 0.7, "acousticness":0.6, "loudness":0.7, "mode":1}
+    elif emotion == "sad":
+        return {"energy": 0.3, "valence": 0.2, "danceability": 0.3, "acousticness":0.7, "loudness":0.5, "mode":0}
+    elif emotion == "angry":
+        return {"energy": 0.8, "valence": 0.4, "danceability": 0.6, "acousticness":0.2, "loudness":0.8, "mode":0}
+    elif emotion == "exciting":
+        return {"energy": 0.9, "valence": 1.0, "danceability": 0.8, "acousticness":0.3, "loudness":0.9, "mode":1}
+    elif emotion == "nervous":
+        return {"energy": 0.8, "valence": 1.0, "danceability": 0.5, "acousticness":0.8, "loudness":0.6, "mode":1}
+    elif emotion == "relaxed":
+        return {"energy": 0.4, "valence": 0.6, "danceability": 0.5, "acousticness":0.9, "loudness":0.4, "mode":1}
+    else:
+        return {"energy": 0.5, "valence": 0.5, "danceability": 0.5, "acousticness":0.5, "loudness":0.5, "mode":1}
+
+# 感情に合った音楽を提案する関数
+def recommend_music(emotion):
+    # 感情に対応する音楽特徴パラメータを取得
+    params = get_emotion_params(emotion)
+    
+    # Spotify APIの曲検索
+    results = sp.recommendations(
+        seed_genres=["pop", "rock", "hip-hop", "jazz", "classical"],  # ジャンルを指定（調整可能）
+        limit=5,
+        target_energy=params["energy"],
+        target_valence=params["valence"],
+        target_danceability=params["danceability"],
+        target_acousticness=params["acousticness"],
+        target_loudness=params["loudness"],
+        target_mode=params["mode"]
+    )
+    
+    # 曲のリストを表示
+    if results and results['tracks']:
+        print(f"Emotion: {emotion}")
+        print("Recommended Tracks:")
+        for track in results['tracks']:
+            print(f"{track['name']} by {track['artists'][0]['name']}")
+            print(f"{track["album"]["name"]}")
+            print(f"{track["album"]["images"][0]["url"]}")
+
+# 使用例
+emotion = "sad"  # 'joyful'(嬉しい), 'sad'(悲しい), 'angry'(怒っている), 'exciting'(楽しい), 'nervous'(緊張している), 'relaxed'(落ち着いている),のいずれか
+recommend_music(emotion)
+
+"  # 'joyful', 'sad', 'angry', 'exciting', 'nervous', 'relaxed' のいずれか"
+recommend_music(emotion)
+         </code>
+      </pre>
+    </body>
+     </div>
+     <div>
+        <h3>【説明】</h3><br>
+        <h4>
+        「そのときの感情に合わせておすすめの曲を出してくれるやつ」を作りました。「そのときの感情」は、joyful（嬉しい）、sad（悲しい）、angry（怒っている）、<br>
+        exciting（楽しい）、nervous（緊張している）、relaxed（落ち着いている）の６つから選ぶことができます。<br>
+        感情を入力すると「曲名byアーティスト名」「アルバム名」「アルバム画像（URL)」を出してくれます。ちなみに５曲出してくれます。<br>
+        ジャンルはpop, rock, hip-hop, jazz, classicalの５つに指定しました。幅広いです。<br>
+        </h4>
+       </div>
+       <div>
+        <h3>【感情に対応する音楽の定義】</h3><br>
+        <h4>
+         今回はSpotifyのAPIを使って、自分で感情に対応する音楽を定義しました。特徴パラメータは６つあります。以下の通りです。<br>
+         <table border>
+            <tr>
+             <th>特徴の名前</th>
+             <th>説明</th>
+            </tr>
+            <tr>
+             <th>energy</th>
+             <th>楽曲のエネルギッシュさ。値が大きいほどノイジーに聞こえる。</th>
+            </tr>
+            <tr>
+             <th>valence</th>
+             <th>値が大きいほどポジティブな曲。値が小さいほどネガティブな曲。</th>
+            </tr>
+            <tr>
+             <th>danceability</th>
+             <th>値が大きいほどテンポが速く、ビートが強い。</th>
+            </tr>
+            <tr>
+             <th>acousticness</th>
+             <th>値が大きいほどアコースティック。値が小さいほど電子音。</th>
+            </tr>
+            <tr>
+             <th>loudness</th>
+             <th>音の大きさ。</th>
+            </tr>
+            <tr>
+             <th>mode</th>
+             <th>1はメジャー、0はマイナー。</th>
+            </tr>
+         </table>
+         <br>
+         値は全て0から1で定義しています。つまり嬉しい、楽しい等の感情はエネルギッシュさや音の大きさを強く出すために、値を大きくしたり、明るくするために<br>
+         曲調をメジャーにしました。逆に怒りや悲しみの感情は、ネガティブさやアコースティック感を出し、曲調をマイナーにしました。
+        </h4>
+       </div>
+     <div>
+      <h3>【感想】</h3><br>
+      <h4>
+      自分で感情に合わせて音楽を定義するのが楽しかったです。数値で定義すれば曲をすぐ出してくれるAPI、マジ便利だなと思いました。<br>
+      </h4>
+     </div>
+     <div>
+        <h3>【参照】</h3><br>
+        <h4>
+        <a href="https://nehapire.com/web/spotify-api/">Spotify API</a><br>
+        <a href="https://qiita.com/K_Kenty/items/2f59ade9429ec96fd3d2">Spotify APIの楽曲データで分析するBTSの世界的人気</a><br>
+        <a href="https://qiita.com/Hiro_maechan20/items/d661c3260ebe954c3fce">【個人開発】今のあなたの感情に合った音楽を提案、私はこんな感情の状況のときに、こんな曲を聴くよ！を共有できるアプリを作りました！</a><br>
+       </h4>
+       </div>
+</body>
+</html>

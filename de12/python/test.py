@@ -5,3 +5,6 @@ for i in range(1,3): #コロンが入っていることに注意
 # 0 人目
 # 1 人目
 # 2 人目
+
+for track in results['tracks']:
+            print(f"{track['name']} by {track['artists'][0]['name']}")

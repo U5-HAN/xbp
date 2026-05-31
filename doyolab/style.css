@@ -1,12 +1,31 @@
-*{
-    padding: 0;
-    margin: 0;
+@charset "utf-8";
+body{
+    width: 100%;
+    min-width: 1280px;
+    overflow-x:hidden;
 }
 header{
-    background: white;
-    text-align: center;
-    padding: 30px;
+    position: relative;
+    margin-bottom: 150px;
 }
+header.g-nav h1{
+    position:absolute;
+    z-index: 1;
+    top: 30px;
+    left: 20px;
+}
+.about_text{
+    text-align: center;
+    line-height: 1.6;
+}
+.box_new{
+    padding: 46px 40px;
+}
+.wrap_1000{
+    width: 1000px;
+    margin:0 auto;
+}
+
 #about{
     background: white;
     text-align: center;

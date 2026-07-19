@@ -5,18 +5,25 @@ print("=================================")
 print("    PASSWORD GENERATOR")
 print("=================================")
 
-# パスワードの長さを入力
-length = int(input("パスワードの長さを入力してください："))
+length = int(input("パスワードの長さ："))
 
-# 使用する文字
-characters = string.ascii_letters + string.digits + string.punctuation
+characters = ""
 
-# パスワード生成
-password = ""
-for i in range(length):
-    password += random.choice(characters)
+if input("英字を使いますか？ (y/n)：") == "y":
+    characters += string.ascii_letters
 
-print("\n生成されたパスワード")
-print("-----------------------------")
-print(password)
-print("-----------------------------")
+if input("数字を使いますか？ (y/n)：") == "y":
+    characters += string.digits
+
+if input("記号を使いますか？ (y/n)：") == "y":
+    characters += string.punctuation
+
+if characters == "":
+    print("1種類以上選んでください！")
+else:
+    password = ""
+    for i in range(length):
+        password += random.choice(characters)
+
+    print("\nあなたのパスワードはこちら！")
+    print(password)
